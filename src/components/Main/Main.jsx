@@ -9,11 +9,15 @@ import AddPostForm from "./AddPostForm.jsx";
 
 function Main() {
     const [posts, setPosts] = useState([]);
+    const [loaded, setLoaded] = useState(false);
     const [loadError, setLoadError] = useState([false, ""]);
 
     useEffect(() => {
         getPosts()
-        .then(posts => setPosts(posts))
+        .then(posts => {
+            setPosts(posts);
+            setLoaded(true);
+        })
         .catch(error => {setLoadError([true, error.message])});
     }, []);
 
@@ -21,12 +25,12 @@ function Main() {
         <main>
             <Container>
                 <Row className="g-4 row-gap-2">
-                    {!loadError[0] && <Postlist posts={ posts }/>}
-                    {loadError[0] && <ErrorDisplay errorMessage={ loadError[1] }/>}
+                    {(!loadError[0] && loaded) && <Postlist posts={ posts }/>}
+                    {(loadError[0] && loaded) && <ErrorDisplay errorMessage={ loadError[1] }/>}
                     
                 </Row>
                 <Row className="justify-content-center py-5">
-                    {!loadError[0] && <AddPostForm posts={posts}/>}
+                    {(!loadError[0] && loaded) && <AddPostForm posts={posts}/>}
                 </Row>
             </Container>
         </main>

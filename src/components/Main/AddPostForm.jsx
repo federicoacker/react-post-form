@@ -1,9 +1,25 @@
+import { useState } from "react";
 import { Col } from "react-bootstrap";
 
+const postTemplate = {
+    author:"",
+    title:"",
+    body:"",
+    public:false
+}
+
 function AddPostForm({ posts }) {
+
+    const [newPost, setNewPost] = useState(postTemplate);
+
+    const changeHandler = (event) => {
+        const target = event.target;
+        const {name, type, value, checked} = target;
+   };
+
     return (
         <Col xs={12} sm={12} md={6}>
-            <form className="form-control d-flex flex-column justify-content-center">
+            <form className="form-control d-flex flex-column justify-content-center text-white" data-bs-theme="dark">
                 <label className="form-label" htmlFor="title">Titolo del Post</label>
                 <input className="form-control" type="text" name="title" id="title" />
                 <label className="form-label" htmlFor="author">Autore</label>
