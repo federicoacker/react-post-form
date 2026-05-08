@@ -4,7 +4,7 @@ import {useState} from "react";
 
 
 function App() {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   return (
     <>
     <Header/>
