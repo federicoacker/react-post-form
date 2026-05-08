@@ -41,6 +41,7 @@ function AddPostForm({setLoaded}) {
         .then(() => {
             setPostSuccess({code:1, message:null});
             setLoaded(false);
+            setNewPost(postTemplate);
         })
         .catch(() => {
             setPostSuccess({code:-1, message:"C'è stato un errore nell'upload del tuo post"})
