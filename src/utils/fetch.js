@@ -29,6 +29,19 @@ function mapPosts(postArrayPromise) {
     return mappedPostArrayPromise;
 }
 
+function addPost( post ){
+    const options = {
+        method: "POST",
+        body: JSON.stringify(post)
+    };
+
+    const postResponsePromise = fetch(API_URL, options)
+    .then(response => response.json());
+
+    return postResponsePromise;
+}
+
 export {
-    getPosts
+    getPosts,
+    addPost
 }
