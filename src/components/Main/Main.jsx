@@ -2,7 +2,7 @@ import { getPosts } from "../../utils/fetch.js";
 import { useState, useEffect } from "react";
 
 import Postlist from "./Postlist.jsx";
-import ErrorDisplay from "./ErrorDisplay.jsx";
+import StateDisplay from "./StateDisplay.jsx";
 import { Container, Row } from "react-bootstrap";
 import AddPostForm from "./AddPostForm.jsx";
 
@@ -26,7 +26,7 @@ function Main() {
             <Container>
                 <Row className="g-4 row-gap-2">
                     {(!loadError[0] && loaded) && <Postlist posts={ posts }/>}
-                    {(loadError[0] && loaded) && <ErrorDisplay errorMessage={ loadError[1] }/>}
+                    {(loadError[0]) && <StateDisplay errorMessage={ loadError[1] } loadError = {true}/>}
                     
                 </Row>
                 <Row className="justify-content-center py-5">

@@ -6,14 +6,16 @@ function validatePost(post){
     const [successTitle, sanifiedTitle] = validateString(title);
     const [successBody, sanifiedBody] = validateString(body);
 
+
+
     if(!successAuthor){
-        return [false, "L'autore non può essere vuoto"];
+        return [false, {error: "L'autore non può essere vuoto"}];
     }
     if(!successTitle){
-        return [false, "Il titolo non può essere vuoto"];
+        return [false, {error: "Il titolo non può essere vuoto"}];
     }
     if(!successBody){
-        return [false, "Il testo del post non può essere vuoto"];
+        return [false, {error: "Il testo del post non può essere vuoto"}];
     }
 
     const sanifiedPost = {
@@ -27,13 +29,11 @@ function validatePost(post){
 }
 
 function validateString(string){
-    const sanifiedString = string.trim();
-
+    const sanifiedString = string.trim().charAt(0).toUpperCase() + string.trim().slice(1);
     if(sanifiedString === ""){
         return [false, null];
     }
     return [true, sanifiedString];
-
 }
 
 export {
