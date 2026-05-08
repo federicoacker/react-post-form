@@ -18,9 +18,10 @@ function mapPosts(postArrayPromise) {
                 post => {
                     return (
                         {
-                            ...post // Per ora non faccio alcun mapping particolare 
-                            // ma mi tengo qua la funzione nel caso in cui fosse 
-                            // necessaria una normalizzazione particolare
+                            ...post,
+                            keyId: crypto.randomUUID()
+                            // Per ora non faccio alcun mapping particolare 
+                            // Aggiungo solo un keyId se mai dovessi fare manipolazioni particolari in futuro e mi dovesse servire
                         });
                 }
             )
