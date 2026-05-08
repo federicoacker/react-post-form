@@ -11,14 +11,16 @@ function Main() {
     const [posts, setPosts] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [loadError, setLoadError] = useState([false, ""]);
-
     useEffect(() => {
         getPosts()
         .then(posts => {
             setPosts(posts);
             setLoaded(true);
         })
-        .catch(error => {setLoadError([true, error.message])});
+        .catch(error => {
+            setLoadError([true, error.message]);
+            
+        });
     }, []);
 
     return (
@@ -26,7 +28,7 @@ function Main() {
             <Container>
                 <Row className="g-4 row-gap-2">
                     {(!loadError[0] && loaded) && <Postlist posts={ posts }/>}
-                    {(loadError[0]) && <StateDisplay errorMessage={ loadError[1] } loadError = {true}/>}
+                    {(loadError[0]) && <StateDisplay stateMessage={ loadError[1] } loadError = {true}/>}
                     
                 </Row>
                 <Row className="justify-content-center py-5">

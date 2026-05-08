@@ -11,7 +11,7 @@ const postTemplate = {
     public: false
 }
 
-function AddPostForm({ posts }) {
+function AddPostForm() {
 
     const [newPost, setNewPost] = useState(postTemplate);
     const [postSuccess, setPostSuccess] = useState({code:0, message:null});
@@ -38,8 +38,12 @@ function AddPostForm({ posts }) {
         }
 
         addPost(validatedResponse)
-        .then(success => {setPostSuccess({code:1, message:null})})
-        .catch(error => {setPostSuccess({code:-1, message:"C'è stato un errore nell'upload del tuo post"})})
+        .then(success => {
+            setPostSuccess({code:1, message:null});
+        })
+        .catch(error => {
+            setPostSuccess({code:-1, message:"C'è stato un errore nell'upload del tuo post"})
+        })
     }
 
 
