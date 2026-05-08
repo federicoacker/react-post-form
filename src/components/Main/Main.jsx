@@ -13,7 +13,6 @@ function Main() {
 
     return (
         <div>
-            {JSON.stringify(posts)}
             <Postlist posts={ posts }/>
         </div>
     );
