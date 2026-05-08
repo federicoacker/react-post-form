@@ -29,4 +29,6 @@ function mapPosts(postArrayPromise) {
     return mappedPostArrayPromise;
 }
 
-export default getPosts();
+export {
+    getPosts
+}
