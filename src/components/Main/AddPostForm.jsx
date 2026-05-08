@@ -11,7 +11,7 @@ const postTemplate = {
     public: false
 }
 
-function AddPostForm() {
+function AddPostForm({setLoaded}) {
 
     const [newPost, setNewPost] = useState(postTemplate);
     const [postSuccess, setPostSuccess] = useState({code:0, message:null});
@@ -38,10 +38,11 @@ function AddPostForm() {
         }
 
         addPost(validatedResponse)
-        .then(success => {
+        .then(() => {
             setPostSuccess({code:1, message:null});
+            setLoaded(false);
         })
-        .catch(error => {
+        .catch(() => {
             setPostSuccess({code:-1, message:"C'è stato un errore nell'upload del tuo post"})
         })
     }
@@ -62,7 +63,6 @@ function AddPostForm() {
                     <p className="form-check-label" >(Potrebbero visualizzarlo lo stesso se non hanno implementato i controlli giusti)</p>
                 </div>
                 <button className="btn btn-primary">Invia il tuo post nell'interweb!</button>
-                {JSON.stringify(newPost)}
                 {
                     (postSuccess.code !== 0) && <StateDisplay 
                     loadError={ false } 

@@ -1,12 +1,14 @@
 import Main from "./components/Main/Main.jsx";
 import Header from "./components/Header/Header.jsx";
+import {useState} from "react";
 
 
 function App() {
+  const [loaded, setLoaded] = useState(false);
   return (
     <>
     <Header/>
-    <Main/>
+    <Main loaded={loaded} setLoaded={setLoaded}/>
     </>
   );
 }
