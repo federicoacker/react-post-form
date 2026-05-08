@@ -14,7 +14,7 @@ function Main() {
     return (
         <div>
             {JSON.stringify(posts)}
-            <Postlist/>
+            <Postlist posts={ posts }/>
         </div>
     );
 }

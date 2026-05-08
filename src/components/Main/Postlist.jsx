@@ -1,8 +1,16 @@
+import Post from "./Post.jsx"
 
-function Postlist() {
-  return (
-    <div>Postlist</div>
-  )
+function Postlist({posts}) {
+    return (
+            posts.map(post => {
+                return post.public && <Post
+                    key={post.id}
+                    author={post.author}
+                    title={post.title}
+                    body={post.body}
+                />
+            })
+    );
 }
 
 export default Postlist
