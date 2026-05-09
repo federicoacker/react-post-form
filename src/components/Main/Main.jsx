@@ -7,9 +7,9 @@ import { Container, Row } from "react-bootstrap";
 import AddPostForm from "./AddPostForm.jsx";
 
 
-function Main() {
+function Main({setLoaded, loaded}) {
     const [posts, setPosts] = useState([]);
-    const [loaded, setLoaded] = useState(true);
+
 
     const [loadError, setLoadError] = useState([false, ""]);
     useEffect(() => {
@@ -22,13 +22,13 @@ function Main() {
             setLoadError([true, error.message]);
             
         });
-    }, [loaded]);
+    }, [loaded, setLoaded]);
 
     return (
         <main>
             <Container>
                 <Row className="g-4 row-gap-2">
-                    {(!loadError[0] && loaded) && <Postlist posts={ posts } setPosts={ setPosts }/>}
+                    {(!loadError[0]) && <Postlist posts={ posts } setPosts={ setPosts }/>}
                     {(loadError[0]) && <StateDisplay stateMessage={ loadError[1] } loadError = {true}/>}
                     
                 </Row>
