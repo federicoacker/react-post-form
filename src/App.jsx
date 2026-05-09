@@ -5,10 +5,11 @@ import { useState } from "react";
 
 function App() {
   const [loaded, setLoaded] = useState(true);
+
   return (
     <>
       <Header />
-      <Main setLoaded={setLoaded} />
+      <Main setLoaded={setLoaded} loaded={loaded}/>
     </>
   );
 }
