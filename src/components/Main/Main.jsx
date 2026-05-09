@@ -7,9 +7,10 @@ import { Container, Row } from "react-bootstrap";
 import AddPostForm from "./AddPostForm.jsx";
 
 
-function Main({loaded, setLoaded}) {
+function Main() {
     const [posts, setPosts] = useState([]);
-    
+    const [loaded, setLoaded] = useState(true);
+
     const [loadError, setLoadError] = useState([false, ""]);
     useEffect(() => {
         getPosts()
@@ -21,7 +22,7 @@ function Main({loaded, setLoaded}) {
             setLoadError([true, error.message]);
             
         });
-    }, [loaded, setLoaded]);
+    }, [loaded]);
 
     return (
         <main>
@@ -32,7 +33,7 @@ function Main({loaded, setLoaded}) {
                     
                 </Row>
                 <Row className="justify-content-center py-5">
-                    {(!loadError[0] && loaded) && <AddPostForm setLoaded={setLoaded}/>}
+                    {(!loadError[0]) && <AddPostForm setLoaded={setLoaded}/>}
                 </Row>
             </Container>
         </main>

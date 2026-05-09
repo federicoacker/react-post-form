@@ -8,11 +8,11 @@ function validatePost(post){
 
 
 
-    if(!successAuthor){
-        return [false, {error: "L'autore non può essere vuoto"}];
-    }
     if(!successTitle){
         return [false, {error: "Il titolo non può essere vuoto"}];
+    }
+    if(!successAuthor){
+        return [false, {error: "L'autore non può essere vuoto"}];
     }
     if(!successBody){
         return [false, {error: "Il testo del post non può essere vuoto"}];
